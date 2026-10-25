@@ -33,6 +33,7 @@ a:hover{color:var(--nib)}
 .foot{border-top:1px solid #ffffff1f;margin-top:clamp(72px,10vw,140px);padding:36px 0 56px;color:var(--muted);font-size:16px}
 .foot .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between}
 .foot nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.foot .legal{font-size:14px;line-height:1.6}
 
 /* hero: the headline, then a playable treble staff that runs to Nib at the right edge */
 .hero{padding-top:clamp(20px,4vw,48px)}
