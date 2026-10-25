@@ -1,7 +1,94 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nib Rally</title><meta name="description" content="Learn to read music notes by racing rivals: treble clef, bass clef or both, one new note at a time. For iPhone, iPad and Android. No ads, no accounts."><meta property="og:type" content="website"><meta property="og:site_name" content="Nib Rally"><meta property="og:title" content="Nib Rally"><meta property="og:description" content="Learn to read music notes by racing rivals: treble clef, bass clef or both, one new note at a time. For iPhone, iPad and Android. No ads, no accounts."><meta property="og:url" content="https://nibrally.com/"><meta property="og:image" content="https://nibrally.com/share.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Nib Rally: Nib and three rivals racing for notes on a staff"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#f5f1e7" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><link rel="stylesheet" href="/style.css"></head>
-<body><main><div class="logo">Nib <em>Rally</em></div>
-<div class="card"><img src="/nib.png" alt="Nib"><div><h1>Read music by playing</h1><span class="muted">Treble clef, bass clef or both, one note at a time. Beat your rivals and 7 bosses to become a Legend.</span></div></div>
-<p class="soon">Coming soon to iPhone, iPad and Android.</p>
-<ul><li>Pick what you play: treble clef for violin, flute or voice, bass clef for cello or trombone, or both for piano.</li><li>Starts from zero: two landmark notes first, then one new note per rival.</li><li>Already read some notes? A short placement test starts you higher.</li><li>Every note you meet is shown first, so you learn before you race.</li><li>In 44 languages, from Arabic and Chinese to Tamil and Vietnamese.</li><li>Works offline. No ads, no accounts, no tracking.</li></ul>
-<nav><a href="/support.html">Support</a><a href="/privacy.html">Privacy</a></nav>
-<footer>© 2026 Solai BV · Belgium · <a href="mailto:info@nibrally.com">info@nibrally.com</a></footer></main></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nib Rally</title><meta name="description" content="Learn to read music notes by racing rivals: treble clef, bass clef or both, one new note at a time. For iPhone, iPad and Android. No ads, no accounts."><meta property="og:type" content="website"><meta property="og:site_name" content="Nib Rally"><meta property="og:title" content="Nib Rally"><meta property="og:description" content="Learn to read music notes by racing rivals: treble clef, bass clef or both, one new note at a time. For iPhone, iPad and Android. No ads, no accounts."><meta property="og:url" content="https://nibrally.com/"><meta property="og:image" content="https://nibrally.com/share.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Nib Rally: Nib and three rivals racing for notes on a staff"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="preload" href="/fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin><meta name="theme-color" content="#1e1538"><link rel="stylesheet" href="/style.css"></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap"><header class="top"><a class="logo" href="/">Nib <b>Rally</b></a><nav aria-label="Site"><a href="/support.html">Support</a><a href="/privacy.html">Privacy</a></nav></header></div>
+<main id="main">
+  <div class="wrap hero">
+    <div class="hero-top"><h1>Read music by playing</h1>
+    <p class="lede">A note glides across the staff towards Nib. Name it on the piano before your rival does, and Nib eats it. One new note at a time, from your very first note to every line and space.</p></div>
+    <div class="demo" aria-describedby="demo-help">
+      <svg id="staff" class="staff" viewBox="0 0 1000 230" role="img" aria-label="A treble staff with one note moving towards Nib"></svg>
+      <div class="piano" role="group" aria-label="Name the note">
+        <button class="key" type="button" aria-label="C, Do"><b>C</b><small>Do</small></button><button class="key" type="button" aria-label="D, Re"><b>D</b><small>Re</small></button><button class="key" type="button" aria-label="E, Mi"><b>E</b><small>Mi</small></button><button class="key" type="button" aria-label="F, Fa"><b>F</b><small>Fa</small></button><button class="key" type="button" aria-label="G, Sol"><b>G</b><small>Sol</small></button><button class="key" type="button" aria-label="A, La"><b>A</b><small>La</small></button><button class="key" type="button" aria-label="B, Si"><b>B</b><small>Si</small></button>
+        <div class="blacks" aria-hidden="true"><i style="--k:1"></i><i style="--k:2"></i><i style="--k:4"></i><i style="--k:5"></i><i style="--k:6"></i></div>
+      </div>
+      <p class="hint" id="demo-help"><span><strong>Try it.</strong> Tap the note's name before it reaches Nib.</span><span id="streak" aria-hidden="true"></span></p>
+      <p class="sr" id="demo-live" aria-live="polite"></p>
+    </div>
+    <div class="soon"><p class="big">Coming soon for iPhone, iPad and Android.</p><p class="small">No ads, no accounts, works offline.</p></div>
+  </div>
+
+  <section class="wrap" aria-labelledby="h-match">
+    <div class="match">
+      <div>
+        <h2 id="h-match">How a match works</h2>
+        <ol class="steps">
+          <li><h3>A note sets off</h3><p>It glides along the staff towards Nib, while your rival gets ready to read it too.</p></li>
+          <li><h3>You name it</h3><p>Tap its name on the piano before your rival's timer runs out. A quick answer scores double.</p></li>
+          <li><h3>Nib eats it, or your rival grabs it</h3><p>First to 12 points wins the round, two rounds win the match. Miss a note and its name is shown, so every note teaches you something.</p></li>
+        </ol>
+      </div>
+      <div class="phone"><img src="/img/shot-match.webp" width="520" height="1125" alt="A match: Nib against Knight E, a bass note on the staff, the piano below" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="h-clef">
+    <h2 id="h-clef">Treble, bass or both</h2>
+    <p class="intro">The game asks what you play and gives you your own ladder. Switch any time in Settings; the notes you know come along.</p>
+    <div class="clefs">
+      <div><div class="glyph"><svg class="cm tc" data-clef="T" viewBox="-1.35 -4.75 2.65 7.9" aria-hidden="true"><path d="M0.34 0.02C0.333 0.1 0.377 0.393 0.3 0.5C0.223 0.607 0.013 0.683 -0.12 0.66C-0.253 0.637 -0.443 0.513 -0.5 0.36C-0.557 0.207 -0.563 -0.093 -0.46 -0.26C-0.357 -0.427 -0.08 -0.623 0.12 -0.64C0.32 -0.657 0.593 -0.527 0.74 -0.36C0.887 -0.193 0.997 0.113 1 0.36C1.003 0.607 0.92 0.937 0.76 1.12C0.6 1.303 0.3 1.447 0.04 1.46C-0.22 1.473 -0.617 1.36 -0.8 1.2C-0.983 1.04 -1.073 0.747 -1.06 0.5C-1.047 0.253 -0.9 -0.038 -0.72 -0.28C-0.54 -0.522 -0.2 -0.697 0.02 -0.95C0.24 -1.203 0.467 -1.492 0.6 -1.8C0.733 -2.108 0.817 -2.467 0.82 -2.8C0.823 -3.133 0.723 -3.525 0.62 -3.8C0.517 -4.075 0.27 -4.342 0.2 -4.45" stroke-width=".5"></path><path d="M0.2 -4.45C0.173 -4.108 0.08 -3.242 0.04 -2.4C0 -1.558 -0.017 -0.183 -0.04 0.6C-0.063 1.383 -0.073 1.937 -0.1 2.3C-0.127 2.663 -0.123 2.683 -0.2 2.78C-0.277 2.877 -0.46 2.91 -0.56 2.88C-0.66 2.85 -0.76 2.647 -0.8 2.6" stroke-width=".42"></path><circle cx="-.66" cy="2.5" r=".42" fill="currentColor" stroke="none"></circle></svg></div><h3>Treble clef</h3><p>Violin, flute, recorder, guitar and voice.<span class="count">18 notes, 16 rivals</span></p></div>
+      <div><div class="glyph"><svg class="cm bc" data-clef="B" viewBox="-.45 -1.25 2.85 4.35" aria-hidden="true"><path d="M0 0C0.037 -0.093 0.087 -0.4 0.22 -0.56C0.353 -0.72 0.6 -0.953 0.8 -0.96C1 -0.967 1.293 -0.793 1.42 -0.6C1.547 -0.407 1.587 -0.103 1.56 0.2C1.533 0.503 1.41 0.893 1.26 1.22C1.11 1.547 0.878 1.887 0.66 2.16C0.442 2.433 0.068 2.743 -0.05 2.86" stroke-width=".42"></path><circle cx=".02" cy=".02" r=".4" fill="currentColor" stroke="none"></circle><circle cx="2.1" cy="-.5" r=".22" fill="currentColor" stroke="none"></circle><circle cx="2.1" cy=".5" r=".22" fill="currentColor" stroke="none"></circle></svg></div><h3>Bass clef</h3><p>Cello, double bass, trombone and bassoon.<span class="count">17 notes, 15 rivals</span></p></div>
+      <div class="both"><div class="glyph"><svg class="cm tc" data-clef="T" viewBox="-1.35 -4.75 2.65 7.9" aria-hidden="true"><path d="M0.34 0.02C0.333 0.1 0.377 0.393 0.3 0.5C0.223 0.607 0.013 0.683 -0.12 0.66C-0.253 0.637 -0.443 0.513 -0.5 0.36C-0.557 0.207 -0.563 -0.093 -0.46 -0.26C-0.357 -0.427 -0.08 -0.623 0.12 -0.64C0.32 -0.657 0.593 -0.527 0.74 -0.36C0.887 -0.193 0.997 0.113 1 0.36C1.003 0.607 0.92 0.937 0.76 1.12C0.6 1.303 0.3 1.447 0.04 1.46C-0.22 1.473 -0.617 1.36 -0.8 1.2C-0.983 1.04 -1.073 0.747 -1.06 0.5C-1.047 0.253 -0.9 -0.038 -0.72 -0.28C-0.54 -0.522 -0.2 -0.697 0.02 -0.95C0.24 -1.203 0.467 -1.492 0.6 -1.8C0.733 -2.108 0.817 -2.467 0.82 -2.8C0.823 -3.133 0.723 -3.525 0.62 -3.8C0.517 -4.075 0.27 -4.342 0.2 -4.45" stroke-width=".5"></path><path d="M0.2 -4.45C0.173 -4.108 0.08 -3.242 0.04 -2.4C0 -1.558 -0.017 -0.183 -0.04 0.6C-0.063 1.383 -0.073 1.937 -0.1 2.3C-0.127 2.663 -0.123 2.683 -0.2 2.78C-0.277 2.877 -0.46 2.91 -0.56 2.88C-0.66 2.85 -0.76 2.647 -0.8 2.6" stroke-width=".42"></path><circle cx="-.66" cy="2.5" r=".42" fill="currentColor" stroke="none"></circle></svg><svg class="cm bc" data-clef="B" viewBox="-.45 -1.25 2.85 4.35" aria-hidden="true"><path d="M0 0C0.037 -0.093 0.087 -0.4 0.22 -0.56C0.353 -0.72 0.6 -0.953 0.8 -0.96C1 -0.967 1.293 -0.793 1.42 -0.6C1.547 -0.407 1.587 -0.103 1.56 0.2C1.533 0.503 1.41 0.893 1.26 1.22C1.11 1.547 0.878 1.887 0.66 2.16C0.442 2.433 0.068 2.743 -0.05 2.86" stroke-width=".42"></path><circle cx=".02" cy=".02" r=".4" fill="currentColor" stroke="none"></circle><circle cx="2.1" cy="-.5" r=".22" fill="currentColor" stroke="none"></circle><circle cx="2.1" cy=".5" r=".22" fill="currentColor" stroke="none"></circle></svg></div><h3>Both clefs</h3><p>Piano, harp and organ, on the grand staff.<span class="count">30 notes, 28 rivals</span></p></div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="h-ladder">
+    <h2 id="h-ladder">Climb seven classes</h2>
+    <p class="intro">Every rival brings exactly one new note. Every class ends with a boss who changes one rule. Beat the Dragon to become a Legend.</p>
+    <ol class="ladder">
+      <li><img src="/img/boss-0.webp" alt="" width="88" height="88" loading="lazy"><span class="cls">Page</span><span class="boss"><b>Page Patient.</b> Slow, but always right.</span></li>
+      <li><img src="/img/boss-1.webp" alt="" width="88" height="88" loading="lazy"><span class="cls">Squire</span><span class="boss"><b>Squire Steady.</b> Every answer is worth one.</span></li>
+      <li><img src="/img/boss-2.webp" alt="" width="88" height="88" loading="lazy"><span class="cls">Knight</span><span class="boss"><b>Knight Mirror.</b> Same distance, different clefs.</span></li>
+      <li><img src="/img/boss-3.webp" alt="" width="88" height="88" loading="lazy"><span class="cls">Baron</span><span class="boss"><b>Baron Hasty.</b> Fast feet, plenty of mistakes.</span></li>
+      <li><img src="/img/boss-4.webp" alt="" width="88" height="88" loading="lazy"><span class="cls">Duke</span><span class="boss"><b>Duke Switch.</b> Check the clef each time.</span></li>
+      <li><img src="/img/boss-5.webp" alt="" width="88" height="88" loading="lazy"><span class="cls">King</span><span class="boss"><b>King Ledger.</b> Read beyond the staff.</span></li>
+      <li><img src="/img/boss-6.webp" alt="" width="88" height="88" loading="lazy"><span class="cls">Dragon</span><span class="boss"><b>Dragon Rising.</b> A little faster each round.</span></li>
+      <li class="legend"><img src="/img/nib-crown.webp" alt="" width="88" height="88" loading="lazy"><span class="cls">Legend</span><span class="boss">Every note on your staff, read like a pro.</span></li>
+    </ol>
+    <p class="ladder-note">Already read some notes? A short placement test starts you higher, up to Duke.</p>
+  </section>
+
+  <section class="wrap" aria-labelledby="h-stay">
+    <h2 id="h-stay">Notes that stay</h2>
+    <p class="intro">Nib Rally remembers every note you read and plans what comes next.</p>
+    <div class="stay">
+      <div><div class="mark"><img src="/img/nib-hurt.webp" alt="" width="52" height="52" loading="lazy"></div><h3>Hard notes come back</h3><p>The notes you find hard turn up more often. The ones you know are spaced further apart.</p></div>
+      <div><div class="mark"><span class="star" aria-hidden="true">★</span></div><h3>Stars for notes that stuck</h3><p>Read a note cleanly on a later day and it earns a star. Your stars show what you really know.</p></div>
+      <div><div class="mark"><img src="/img/nib-happy.webp" alt="" width="52" height="52" loading="lazy"></div><h3>A little every day</h3><p>A daily streak and a daily rematch keep your notes fresh in a few minutes.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="h-screens">
+    <h2 id="h-screens">Inside the game</h2>
+    <div class="screens">
+      <figure><div class="phone"><img src="/img/shot-boss.webp" width="520" height="1125" alt="The Knight Mirror boss card" loading="lazy"></div><figcaption>A boss shows its twist before you fight.</figcaption></figure>
+      <figure><div class="phone"><img src="/img/shot-ladder.webp" width="520" height="1125" alt="The ladder with seven classes" loading="lazy"></div><figcaption>The ladder shows how far you have climbed.</figcaption></figure>
+      <figure><div class="phone"><img src="/img/shot-placement.webp" width="520" height="1125" alt="Placement result: provisional Knight" loading="lazy"></div><figcaption>The placement test skips what you know.</figcaption></figure>
+      <figure><div class="phone"><img src="/img/shot-opening.webp" width="520" height="1125" alt="The first note: tap C" loading="lazy"></div><figcaption>New notes are shown before they count.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="h-parents">
+    <h2 id="h-parents">For parents and teachers</h2>
+    <dl class="facts">
+      <div><dt>Who it is for</dt><dd>Children from about 8, and adult beginners. A good companion to piano lessons, music school or choir.</dd></div>
+      <div><dt>Private by design</dt><dd>No ads, no accounts, no tracking. Progress stays on the device and the game never goes online.</dd></div>
+      <div><dt>Note names your way</dt><dd>Letters (C D E), Do Re Mi with Si or Ti, German names with H, or the names used in your language.</dd></div>
+      <div><dt>At your own pace</dt><dd>Practice without a clock, a free hint whenever you need one, and no penalty for losing a match.</dd></div>
+    </dl>
+    <p class="langs" aria-label="The game speaks 44 languages"><span lang="en">English</span> <span lang="nl">Nederlands</span> <span lang="fr">Français</span> <span lang="de">Deutsch</span> <span lang="es">Español</span> <span lang="it">Italiano</span> <span lang="pt">Português</span> <span lang="ca">Català</span> <span lang="ro">Română</span> <span lang="pl">Polski</span> <span lang="cs">Čeština</span> <span lang="sk">Slovenčina</span> <span lang="sl">Slovenščina</span> <span lang="hu">Magyar</span> <span lang="hr">Hrvatski</span> <span lang="tr">Türkçe</span> <span lang="el">Ελληνικά</span> <span lang="da">Dansk</span> <span lang="nb">Norsk bokmål</span> <span lang="sv">Svenska</span> <span lang="fi">Suomi</span> <span lang="ru">Русский</span> <span lang="uk">Українська</span> <span lang="vi">Tiếng Việt</span> <span lang="id">Bahasa Indonesia</span> <span lang="ms">Bahasa Melayu</span> <span lang="th">ไทย</span> <span lang="hi">हिन्दी</span> <span lang="ur">اردو</span> <span lang="ja">日本語</span> <span lang="ko">한국어</span> <span lang="zh-Hans">简体中文</span> <span lang="zh-Hant">繁體中文</span> <span lang="ar">العربية</span> <span lang="he">עברית</span> <span lang="bn">বাংলা</span> <span lang="pa">ਪੰਜਾਬੀ</span> <span lang="gu">ગુજરાતી</span> <span lang="mr">मराठी</span> <span lang="kn">ಕನ್ನಡ</span> <span lang="ml">മലയാളം</span> <span lang="ta">தமிழ்</span> <span lang="te">తెలుగు</span> <span lang="or">ଓଡ଼ିଆ</span></p>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><span>© 2026 Solai BV, Belgium</span><nav aria-label="More"><a href="/support.html">Support</a><a href="/privacy.html">Privacy</a><a href="mailto:info@nibrally.com">info@nibrally.com</a></nav></div></footer>
+<template id="clef-src"><svg class="cm tc" data-clef="T" viewBox="-1.35 -4.75 2.65 7.9" aria-hidden="true"><path d="M0.34 0.02C0.333 0.1 0.377 0.393 0.3 0.5C0.223 0.607 0.013 0.683 -0.12 0.66C-0.253 0.637 -0.443 0.513 -0.5 0.36C-0.557 0.207 -0.563 -0.093 -0.46 -0.26C-0.357 -0.427 -0.08 -0.623 0.12 -0.64C0.32 -0.657 0.593 -0.527 0.74 -0.36C0.887 -0.193 0.997 0.113 1 0.36C1.003 0.607 0.92 0.937 0.76 1.12C0.6 1.303 0.3 1.447 0.04 1.46C-0.22 1.473 -0.617 1.36 -0.8 1.2C-0.983 1.04 -1.073 0.747 -1.06 0.5C-1.047 0.253 -0.9 -0.038 -0.72 -0.28C-0.54 -0.522 -0.2 -0.697 0.02 -0.95C0.24 -1.203 0.467 -1.492 0.6 -1.8C0.733 -2.108 0.817 -2.467 0.82 -2.8C0.823 -3.133 0.723 -3.525 0.62 -3.8C0.517 -4.075 0.27 -4.342 0.2 -4.45" stroke-width=".5"></path><path d="M0.2 -4.45C0.173 -4.108 0.08 -3.242 0.04 -2.4C0 -1.558 -0.017 -0.183 -0.04 0.6C-0.063 1.383 -0.073 1.937 -0.1 2.3C-0.127 2.663 -0.123 2.683 -0.2 2.78C-0.277 2.877 -0.46 2.91 -0.56 2.88C-0.66 2.85 -0.76 2.647 -0.8 2.6" stroke-width=".42"></path><circle cx="-.66" cy="2.5" r=".42" fill="currentColor" stroke="none"></circle></svg></template>
+<script src="/demo.js" defer></script>
+</body></html>

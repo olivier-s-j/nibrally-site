@@ -1,10 +1,149 @@
-:root{--bg:#0f1115;--panel:#1f232c;--line:#2c3240;--text:#eef1f6;--muted:#9aa3b5;--accent:#c8ff3b;--warn:#ffc53d}
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f5f1e7;--panel:#fffdf7;--line:#d6cebd;--text:#20242b;--muted:#5c625f;--accent:#557900}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:720px;margin:0 auto;padding:40px 16px 64px}a{color:var(--accent)}
-.logo{font:800 30px/1 "Barlow Condensed","DIN Condensed",system-ui,sans-serif;letter-spacing:.02em;text-transform:uppercase}.logo em{font-style:normal;color:var(--accent)}
-h1{font:800 44px/1.05 "Barlow Condensed","DIN Condensed",system-ui,sans-serif;text-transform:uppercase;margin:18px 0 8px}h2{font-size:20px;margin:28px 0 6px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;margin:22px 0;display:flex;gap:18px;align-items:center}
-.card img{width:88px;height:88px;border-radius:20px;flex:none}.muted{color:var(--muted)}footer{margin-top:48px;color:var(--muted);font-size:14px}
-nav a{margin-right:16px}ul{padding-left:20px}
-.card h1{margin-top:0}.soon{font-weight:600;margin:0 0 6px}
+/* Nib Rally site. The arena at night: the rivals' violet, the game's clef colours (treble blue, bass pink),
+   Nib's yellow, and the game's own type (Barlow Condensed for display, Barlow for text). */
+@font-face{font-family:'Barlow Condensed';font-weight:800;font-display:swap;src:url(/fonts/barlow-condensed-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:700;font-display:swap;src:url(/fonts/barlow-condensed-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:400;font-display:swap;src:url(/fonts/barlow-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:500;font-display:swap;src:url(/fonts/barlow-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow';font-weight:600;font-display:swap;src:url(/fonts/barlow-latin-600-normal.woff2) format('woff2')}
+
+:root{
+  --night:#1e1538; --deep:#150f2a; --panel:#2a2050; --ink:#8e83b8;
+  --paper:#f5f1ff; --muted:#b9b0d8;
+  --nib:#ffc93c; --treble:#5b9dff; --bass:#ff5c93; --lime:#c8ff3b;
+  --display:'Barlow Condensed','Arial Narrow',system-ui,sans-serif; --text:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --wrap:1120px; --gut:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--paper);font:400 18px/1.6 var(--text);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:var(--paper);text-decoration-color:var(--nib);text-decoration-thickness:2px;text-underline-offset:3px}
+a:hover{color:var(--nib)}
+:focus-visible{outline:3px solid var(--nib);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin-left:auto;margin-right:auto;padding-left:var(--gut);padding-right:var(--gut)}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:9;background:var(--nib);color:var(--deep);padding:8px 12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header and footer */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+.logo{font:800 30px/1 var(--display);letter-spacing:.01em;text-transform:uppercase;text-decoration:none;color:var(--paper)}
+.logo b{color:var(--lime);font-weight:800}
+.top nav{display:flex;gap:22px;font-weight:500}
+.top nav a{text-decoration:none;color:var(--muted)}.top nav a:hover,.top nav a[aria-current]{color:var(--paper)}
+.foot{border-top:1px solid #ffffff1f;margin-top:clamp(72px,10vw,140px);padding:36px 0 56px;color:var(--muted);font-size:16px}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+
+/* hero: the headline, then a playable treble staff that runs to Nib at the right edge */
+.hero{padding-top:clamp(20px,4vw,48px)}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px clamp(24px,5vw,64px);align-items:end}
+.hero h1{font:800 clamp(58px,9vw,128px)/.86 var(--display);text-transform:uppercase;letter-spacing:-.005em;margin:0;max-width:9ch}
+.hero .lede{font-size:clamp(19px,1.8vw,22px);color:var(--muted);max-width:30em;margin:0 0 .4em}
+.demo{margin-top:clamp(16px,3vw,32px)}
+.staff{width:100%;height:auto;overflow:visible;touch-action:manipulation}
+.staff .line{stroke:var(--ink);stroke-width:1.6}
+.staff .clef{color:var(--treble)}
+.staff .clef path,.staff .clef circle{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.staff .clef circle{fill:currentColor;stroke:none}
+.staff .name{font:800 26px var(--display);fill:var(--deep)}
+.staff .chip{fill:var(--nib)}
+.piano{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:620px;margin:18px auto 0;position:relative}
+.piano::before{content:"";position:absolute;inset:-10px 0 auto;height:14px;background:var(--deep);border-radius:10px 10px 0 0}
+.key{position:relative;appearance:none;border:0;border-radius:0 0 12px 12px;background:#eef0f7;color:#140e28;padding:62px 0 12px;box-shadow:0 6px 0 #a7a3c2;cursor:pointer;font:inherit;touch-action:manipulation}
+.blacks{position:absolute;inset:0 0 auto;height:46%;pointer-events:none}
+.blacks i{position:absolute;top:0;left:calc(var(--k) * (100% + 6px) / 7 - 3px);width:7.5%;height:100%;transform:translateX(-50%);background:#140e28;border-radius:0 0 7px 7px}
+.key b{display:block;font:800 30px/1 var(--display)}
+.key small{display:block;font:500 13px/1.2 var(--text);color:#5a5577;margin-top:4px}
+.key:active,.key.down{transform:translateY(4px);box-shadow:0 2px 0 #a7a3c2}
+.key.good{background:var(--lime)}
+.key.bad{background:var(--bass);color:#fff}.key.bad small{color:#ffe3ec}
+.hint{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;max-width:620px;margin:16px auto 0;color:var(--muted);font-size:16px}
+.hint strong{color:var(--paper);font-weight:600}
+.soon{margin:clamp(40px,6vw,64px) 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+.soon p{margin:0}
+.soon .big{font:700 clamp(28px,3.4vw,40px)/1.1 var(--display);color:var(--paper)}
+.soon .small{color:var(--muted)}
+
+/* sections */
+section{padding-top:clamp(72px,10vw,140px)}
+h2{font:700 clamp(36px,5vw,62px)/1 var(--display);margin:0 0 18px;max-width:18ch}
+.intro{color:var(--muted);max-width:36em;margin:0 0 clamp(28px,4vw,48px)}
+h3{font:700 28px/1.1 var(--display);margin:0 0 6px}
+
+/* how a match works: a real sequence, so numbered */
+.match{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:clamp(32px,6vw,80px);align-items:center}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:28px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:0 18px}
+.steps li::before{content:counter(s);font:800 64px/.8 var(--display);color:var(--nib);grid-row:span 2}
+.steps li:nth-child(2)::before{color:var(--treble)}.steps li:nth-child(3)::before{color:var(--bass)}
+.steps p{margin:0;color:var(--muted);max-width:30em}
+.phone{border-radius:34px;border:8px solid var(--deep);box-shadow:0 0 0 1px #ffffff26;overflow:hidden;background:var(--deep)}
+.phone img{width:100%;height:auto}
+
+/* clef choice */
+.clefs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,48px)}
+.clefs .glyph{height:132px;display:flex;align-items:flex-end;gap:6px;margin-bottom:18px}
+.clefs .glyph svg{height:100%;width:auto;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.clefs .glyph svg circle{fill:currentColor;stroke:none}
+.clefs .glyph .tc{color:var(--treble)}.clefs .glyph .bc{color:var(--bass);height:62%;margin-bottom:12%}
+.clefs .both .tc{height:92%}.clefs .both .bc{height:52%}
+.clefs p{margin:0;color:var(--muted)}
+.clefs .count{display:block;color:var(--paper);font-weight:600;margin-top:8px}
+
+/* the ladder: rails and rungs, climbed from the bottom */
+.ladder{list-style:none;margin:0 auto;padding:0;max-width:620px;display:flex;flex-direction:column-reverse;position:relative}
+.ladder::before,.ladder::after{content:"";position:absolute;top:-28px;bottom:-28px;width:10px;border-radius:5px;background:#5c4d96}
+.ladder::before{left:0}.ladder::after{right:0}
+.ladder li{position:relative;display:grid;grid-template-columns:88px 1fr;gap:4px 18px;align-items:center;padding:18px 36px}
+.ladder li::after{content:"";position:absolute;left:0;right:0;top:-4px;height:8px;border-radius:4px;background:#5c4d96}
+.ladder li:first-child::before{content:"";position:absolute;left:0;right:0;bottom:-4px;height:8px;border-radius:4px;background:#5c4d96}
+.ladder img{width:88px;height:88px;grid-row:span 2}
+.ladder .cls{font:800 30px/1 var(--display);text-transform:uppercase}
+.ladder .boss{color:var(--muted);font-size:16px}
+.ladder .boss b{color:var(--paper);font-weight:600}
+.ladder .legend .cls{color:var(--nib)}
+.ladder-note{max-width:620px;margin:46px auto 0;color:var(--muted);font-size:16px;text-align:center}
+
+/* notes that stay */
+.stay{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,48px)}
+.stay p{margin:0;color:var(--muted)}
+.stay .mark{height:52px;margin-bottom:12px;display:flex;align-items:flex-end}
+.stay .mark img{height:52px;width:52px}
+.stay .mark .star{font:800 52px/1 var(--display);color:var(--nib)}
+
+/* screens */
+.screens{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:22px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.screens figure{margin:0;scroll-snap-align:start}
+.screens .phone{border-radius:26px;border-width:6px}
+.screens figcaption{margin-top:12px;color:var(--muted);font-size:16px}
+
+/* for parents */
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(24px,5vw,64px);margin:0}
+.facts div{border-top:1px solid #ffffff26;padding-top:16px}
+.facts dt{font:700 24px/1.15 var(--display);margin-bottom:6px}
+.facts dd{margin:0;color:var(--muted)}
+.langs{margin:clamp(32px,5vw,56px) 0 0;color:var(--muted);font-size:clamp(18px,2vw,22px);line-height:1.8;max-width:56em}
+.langs span{white-space:nowrap;margin-right:.9em}
+
+/* text pages */
+.page{max-width:720px}
+.page h1{font:800 clamp(48px,8vw,88px)/.9 var(--display);text-transform:uppercase;margin:clamp(24px,5vw,56px) 0 24px}
+.page h2{font-size:clamp(28px,3.4vw,38px);margin-top:44px;max-width:none}
+.page p,.page li{color:var(--muted)}.page b,.page strong{color:var(--paper);font-weight:600}
+.page ul{padding-left:20px}.page li{margin-bottom:10px}
+
+@media (max-width:860px){
+  .hero-top{grid-template-columns:1fr}.hero .lede{margin:0}
+  .match{grid-template-columns:1fr}.match .phone{max-width:320px}
+  .clefs,.stay{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .screens{grid-template-columns:repeat(4,72%)}
+}
+@media (max-width:520px){
+  body{font-size:17px}
+  .top nav{gap:14px}
+  .key{padding-top:50px}.key b{font-size:24px}.key small{font-size:11px}
+  .piano{gap:4px}
+  .ladder li{grid-template-columns:64px 1fr;padding:12px 24px}.ladder img{width:64px;height:64px}.ladder .cls{font-size:24px}
+  .steps li{grid-template-columns:40px 1fr}.steps li::before{font-size:48px}
+}
