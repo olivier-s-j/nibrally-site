@@ -1,5 +1,5 @@
-/* Nib Rally site. The arena at night: the rivals' violet, the game's clef colours (treble blue, bass pink),
-   Nib's yellow, and the game's own type (Barlow Condensed for display, Barlow for text). */
+/* Nib Rally site, in the game's own look: charcoal, one ivory accent, white clefs, and the characters as the only colour.
+   A rival's name takes the colour of its note; bosses are gold. Type as in the game: Barlow Condensed for display, Barlow for text. */
 @font-face{font-family:'Barlow Condensed';font-weight:800;font-display:swap;src:url(/fonts/barlow-condensed-latin-800-normal.woff2) format('woff2')}
 @font-face{font-family:'Barlow Condensed';font-weight:700;font-display:swap;src:url(/fonts/barlow-condensed-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Barlow';font-weight:400;font-display:swap;src:url(/fonts/barlow-latin-400-normal.woff2) format('woff2')}
@@ -7,67 +7,71 @@
 @font-face{font-family:'Barlow';font-weight:600;font-display:swap;src:url(/fonts/barlow-latin-600-normal.woff2) format('woff2')}
 
 :root{
-  --night:#1e1538; --deep:#150f2a; --panel:#2a2050; --ink:#8e83b8;
-  --paper:#f5f1ff; --muted:#b9b0d8;
-  --nib:#ffc93c; --treble:#5b9dff; --bass:#ff5c93; --lime:#c8ff3b;
+  --bg:#0f1115; --bg2:#171a21; --panel:#1f232c; --line:#2b303c; --staff:#4d5568;
+  --paper:#f5f6f8; --muted:#a0a8ba;
+  --ivory:#f3eddc; --ivory2:#b5ae9a; --ink:#1b1d24; --bad:#ff4f8b; --gold:#e2b84a;
+  --do:#ff7f6e; --re:#ff9a4d; --mi:#9b6be0; --fa:#45c26a; --sol:#5aaeff; --la:#f38bc2; --si:#22b5a8;
   --display:'Barlow Condensed','Arial Narrow',system-ui,sans-serif; --text:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
   --wrap:1120px; --gut:clamp(16px,4vw,40px);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--night);color:var(--paper);font:400 18px/1.6 var(--text);overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--paper);font:400 18px/1.6 var(--text);overflow-x:hidden}
 img,svg{display:block;max-width:100%}
-a{color:var(--paper);text-decoration-color:var(--nib);text-decoration-thickness:2px;text-underline-offset:3px}
-a:hover{color:var(--nib)}
-:focus-visible{outline:3px solid var(--nib);outline-offset:3px;border-radius:6px}
+a{color:var(--paper);text-decoration-color:var(--ivory2);text-decoration-thickness:2px;text-underline-offset:3px}
+a:hover{color:var(--ivory)}
+:focus-visible{outline:3px solid var(--ivory);outline-offset:3px;border-radius:6px}
 .wrap{max-width:var(--wrap);margin-left:auto;margin-right:auto;padding-left:var(--gut);padding-right:var(--gut)}
-.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:9;background:var(--nib);color:var(--deep);padding:8px 12px}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:9;background:var(--ivory);color:var(--ink);padding:8px 12px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* header and footer */
 .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
 .logo{font:800 30px/1 var(--display);letter-spacing:.01em;text-transform:uppercase;text-decoration:none;color:var(--paper)}
-.logo b{color:var(--lime);font-weight:800}
+.logo b{color:var(--ivory);font-weight:800}
 .top nav{display:flex;gap:22px;font-weight:500}
 .top nav a{text-decoration:none;color:var(--muted)}.top nav a:hover,.top nav a[aria-current]{color:var(--paper)}
-.foot{border-top:1px solid #ffffff1f;margin-top:clamp(72px,10vw,140px);padding:36px 0 56px;color:var(--muted);font-size:16px}
+.foot{border-top:1px solid var(--line);margin-top:clamp(72px,10vw,140px);padding:36px 0 56px;color:var(--muted);font-size:16px}
 .foot .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between}
 .foot nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 .foot .legal{font-size:14px;line-height:1.6}
 
-/* hero: the headline, then a playable treble staff that runs to Nib at the right edge */
+/* the one action: an ivory button like the game's own */
+.cta{display:inline-flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:var(--ivory);color:var(--ink);text-decoration:none;border-radius:16px;padding:17px 30px 14px;box-shadow:0 6px 0 var(--ivory2);font:800 clamp(24px,2.3vw,28px)/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.cta small{font:500 14px/1.2 var(--text);text-transform:none;letter-spacing:0;color:#50535c}
+.cta:hover{color:var(--ink);background:#fbf7ea}
+.cta:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ivory2)}
+.cta:focus-visible{border-radius:16px}
+.also{margin:16px 0 0;color:var(--muted);font-size:16px}
+
+/* hero: the headline and the action, then a playable treble staff that runs to Nib at the right edge */
 .hero{padding-top:clamp(20px,4vw,48px)}
 .hero-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px clamp(24px,5vw,64px);align-items:end}
 .hero h1{font:800 clamp(58px,9vw,128px)/.86 var(--display);text-transform:uppercase;letter-spacing:-.005em;margin:0;max-width:9ch}
-.hero .lede{font-size:clamp(19px,1.8vw,22px);color:var(--muted);max-width:30em;margin:0 0 .4em}
-.demo{margin-top:clamp(16px,3vw,32px)}
+.hero .lede{font-size:clamp(19px,1.8vw,22px);color:var(--muted);max-width:30em;margin:0 0 1.1em}
+.demo{margin-top:clamp(28px,4vw,48px)}
 .staff{width:100%;height:auto;overflow:visible;touch-action:manipulation}
-.staff .line{stroke:var(--ink);stroke-width:1.6}
-.staff .clef{color:var(--treble)}
-.staff .clef path,.staff .clef circle{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-.staff .clef circle{fill:currentColor;stroke:none}
-.staff .name{font:800 26px var(--display);fill:var(--deep)}
-.staff .chip{fill:var(--nib)}
+.staff .line{stroke:var(--staff);stroke-width:1.6}
+.staff .clef{color:var(--paper)}
+.staff .clef path{fill:currentColor;stroke:none}
+.staff .name{font:800 26px var(--display);fill:var(--ink)}
+.staff .chip{fill:var(--ivory)}
 .piano{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:620px;margin:18px auto 0;position:relative}
-.piano::before{content:"";position:absolute;inset:-10px 0 auto;height:14px;background:var(--deep);border-radius:10px 10px 0 0}
-.key{position:relative;appearance:none;border:0;border-radius:0 0 12px 12px;background:#eef0f7;color:#140e28;padding:62px 0 12px;box-shadow:0 6px 0 #a7a3c2;cursor:pointer;font:inherit;touch-action:manipulation}
+.piano::before{content:"";position:absolute;inset:-10px 0 auto;height:14px;background:var(--bg2);border-radius:10px 10px 0 0}
+.key{position:relative;appearance:none;border:0;border-radius:0 0 12px 12px;background:#eef1f6;color:#0b0d12;padding:62px 0 12px;box-shadow:0 6px 0 #a9b2c3;cursor:pointer;font:inherit;touch-action:manipulation}
 .blacks{position:absolute;inset:0 0 auto;height:46%;pointer-events:none}
-.blacks i{position:absolute;top:0;left:calc(var(--k) * (100% + 6px) / 7 - 3px);width:7.5%;height:100%;transform:translateX(-50%);background:#140e28;border-radius:0 0 7px 7px}
+.blacks i{position:absolute;top:0;left:calc(var(--k) * (100% + 6px) / 7 - 3px);width:7.5%;height:100%;transform:translateX(-50%);background:#0b0c10;border-radius:0 0 7px 7px}
 .key b{display:block;font:800 30px/1 var(--display)}
-.key small{display:block;font:500 13px/1.2 var(--text);color:#5a5577;margin-top:4px}
-.key:active,.key.down{transform:translateY(4px);box-shadow:0 2px 0 #a7a3c2}
-.key.good{background:var(--lime)}
-.key.bad{background:var(--bass);color:#fff}.key.bad small{color:#ffe3ec}
+.key small{display:block;font:500 13px/1.2 var(--text);color:#5c606c;margin-top:4px}
+.key:active,.key.down{transform:translateY(4px);box-shadow:0 2px 0 #a9b2c3}
+.key.good{background:var(--ivory)}
+.key.bad{background:var(--bad);color:#fff}.key.bad small{color:#ffe3ec}
 .hint{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;max-width:620px;margin:16px auto 0;color:var(--muted);font-size:16px}
 .hint strong{color:var(--paper);font-weight:600}
-.soon{margin:clamp(40px,6vw,64px) 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
-.soon p{margin:0}
-.soon .big{font:700 clamp(28px,3.4vw,40px)/1.1 var(--display);color:var(--paper)}
-.soon .small{color:var(--muted)}
 
 /* sections */
 section{padding-top:clamp(72px,10vw,140px)}
-h2{font:700 clamp(36px,5vw,62px)/1 var(--display);margin:0 0 18px;max-width:18ch}
+h2{font:800 clamp(38px,5vw,64px)/.95 var(--display);text-transform:uppercase;letter-spacing:.005em;margin:0 0 18px;max-width:16ch}
 .intro{color:var(--muted);max-width:36em;margin:0 0 clamp(28px,4vw,48px)}
 h3{font:700 28px/1.1 var(--display);margin:0 0 6px}
 
@@ -75,42 +79,47 @@ h3{font:700 28px/1.1 var(--display);margin:0 0 6px}
 .match{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:clamp(32px,6vw,80px);align-items:center}
 .steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:28px}
 .steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:0 18px}
-.steps li::before{content:counter(s);font:800 64px/.8 var(--display);color:var(--nib);grid-row:span 2}
-.steps li:nth-child(2)::before{color:var(--treble)}.steps li:nth-child(3)::before{color:var(--bass)}
+.steps li::before{content:counter(s);font:800 64px/.8 var(--display);color:var(--ivory);grid-row:span 2}
 .steps p{margin:0;color:var(--muted);max-width:30em}
-.phone{border-radius:34px;border:8px solid var(--deep);box-shadow:0 0 0 1px #ffffff26;overflow:hidden;background:var(--deep)}
+.phone{border-radius:34px;border:8px solid var(--panel);box-shadow:0 0 0 1px var(--line);overflow:hidden;background:var(--bg)}
 .phone img{width:100%;height:auto}
+
+/* the rivals: seven note names, seven colours, standing on one staff line */
+.rivals{list-style:none;margin:0;padding:0 0 0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0 clamp(4px,1.4vw,18px);border-bottom:2px solid var(--staff)}
+.rivals li{display:flex;flex-direction:column;align-items:center;position:relative}
+.rivals img{width:100%;max-width:132px;height:auto;margin-bottom:-6px}
+.rivals b{position:absolute;top:calc(100% + 14px);font:800 clamp(34px,5vw,58px)/1 var(--display)}
+.rivals small{position:absolute;top:calc(100% + 14px + clamp(34px,5vw,58px) + 2px);color:var(--muted);font-size:15px}
+.rivals-wrap{padding-bottom:clamp(64px,8vw,96px)}
+.n-c{color:var(--do)}.n-d{color:var(--re)}.n-e{color:var(--mi)}.n-f{color:var(--fa)}.n-g{color:var(--sol)}.n-a{color:var(--la)}.n-b{color:var(--si)}
 
 /* clef choice */
 .clefs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,48px)}
-.clefs .glyph{height:132px;display:flex;align-items:flex-end;gap:6px;margin-bottom:18px}
-.clefs .glyph svg{height:100%;width:auto;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-.clefs .glyph svg circle{fill:currentColor;stroke:none}
-.clefs .glyph .tc{color:var(--treble)}.clefs .glyph .bc{color:var(--bass);height:62%;margin-bottom:12%}
-.clefs .both .tc{height:92%}.clefs .both .bc{height:52%}
+.clefs .glyph{height:132px;display:flex;align-items:center;gap:18px;margin-bottom:18px;color:var(--paper)}
+.clefs .glyph svg{height:100%;width:auto;fill:currentColor}
+.clefs .glyph .bc{height:51%}
 .clefs p{margin:0;color:var(--muted)}
 .clefs .count{display:block;color:var(--paper);font-weight:600;margin-top:8px}
 
-/* the ladder: rails and rungs, climbed from the bottom */
-.ladder{list-style:none;margin:0 auto;padding:0;max-width:620px;display:flex;flex-direction:column-reverse;position:relative}
-.ladder::before,.ladder::after{content:"";position:absolute;top:-28px;bottom:-28px;width:10px;border-radius:5px;background:#5c4d96}
-.ladder::before{left:0}.ladder::after{right:0}
-.ladder li{position:relative;display:grid;grid-template-columns:88px 1fr;gap:4px 18px;align-items:center;padding:18px 36px}
-.ladder li::after{content:"";position:absolute;left:0;right:0;top:-4px;height:8px;border-radius:4px;background:#5c4d96}
-.ladder li:first-child::before{content:"";position:absolute;left:0;right:0;bottom:-4px;height:8px;border-radius:4px;background:#5c4d96}
-.ladder img{width:88px;height:88px;grid-row:span 2}
-.ladder .cls{font:800 30px/1 var(--display);text-transform:uppercase}
-.ladder .boss{color:var(--muted);font-size:16px}
-.ladder .boss b{color:var(--paper);font-weight:600}
-.ladder .legend .cls{color:var(--nib)}
-.ladder-note{max-width:620px;margin:46px auto 0;color:var(--muted);font-size:16px;text-align:center}
+/* the levels: a staircase from Largo up to Presto, each boss on its own step */
+.levels{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));align-items:start}
+.levels li{margin-top:calc((7 - var(--i)) * 26px);display:flex;flex-direction:column;padding-right:10px}
+.levels img{width:100%;max-width:112px;height:auto;margin-bottom:-4px}
+.levels .step{border-top:2px solid var(--staff);padding-top:12px;display:flex;flex-direction:column}
+.levels .lv{color:var(--muted);font-size:14px;line-height:1.2}
+.levels .tempo{font:800 clamp(22px,2.3vw,30px)/1.05 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.levels .boss{color:var(--gold);font-weight:600;font-size:16px;margin-top:8px;line-height:1.25}
+.levels .twist{color:var(--muted);font-size:15px;line-height:1.35;margin-top:2px}
+.levels .legend .step{border-top-color:var(--ivory)}
+.levels .legend .tempo{color:var(--ivory)}
+.ladder-note{margin:clamp(28px,4vw,44px) 0 0;color:var(--muted);max-width:44em}
 
 /* notes that stay */
 .stay{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,48px)}
 .stay p{margin:0;color:var(--muted)}
-.stay .mark{height:52px;margin-bottom:12px;display:flex;align-items:flex-end}
-.stay .mark img{height:52px;width:52px}
-.stay .mark .star{font:800 52px/1 var(--display);color:var(--nib)}
+.stay .mark{height:64px;margin-bottom:12px;display:flex;align-items:flex-end}
+.stay .mark img{height:64px;width:64px}
+.stay .mark svg{height:52px;width:52px;color:var(--ivory)}
 
 /* screens */
 .screens{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:22px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
@@ -119,32 +128,54 @@ h3{font:700 28px/1.1 var(--display);margin:0 0 6px}
 .screens figcaption{margin-top:12px;color:var(--muted);font-size:16px}
 
 /* for parents */
-.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(24px,5vw,64px);margin:0}
-.facts div{border-top:1px solid #ffffff26;padding-top:16px}
+.parents{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(32px,6vw,80px);align-items:start}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(24px,4vw,48px);margin:0}
+.facts div{border-top:1px solid var(--line);padding-top:16px}
 .facts dt{font:700 24px/1.15 var(--display);margin-bottom:6px}
 .facts dd{margin:0;color:var(--muted)}
-.langs{margin:clamp(32px,5vw,56px) 0 0;color:var(--muted);font-size:clamp(18px,2vw,22px);line-height:1.8;max-width:56em}
+.parents figure{margin:0}.parents figcaption{margin-top:12px;color:var(--muted);font-size:16px}
+.langs-h{margin-top:clamp(40px,6vw,72px)}
+.langs{margin:10px 0 0;color:var(--muted);font-size:clamp(18px,2vw,22px);line-height:1.8;max-width:56em}
 .langs span{white-space:nowrap;margin-right:.9em}
+
+/* the closing action */
+.get{display:flex;flex-wrap:wrap;align-items:center;gap:20px clamp(24px,5vw,56px)}
+.get img{width:120px;height:120px}
+.get h2{margin:0 0 20px;max-width:14ch}
 
 /* text pages */
 .page{max-width:720px}
 .page h1{font:800 clamp(48px,8vw,88px)/.9 var(--display);text-transform:uppercase;margin:clamp(24px,5vw,56px) 0 24px}
-.page h2{font-size:clamp(28px,3.4vw,38px);margin-top:44px;max-width:none}
+.page h2{font:700 clamp(28px,3.4vw,38px)/1.05 var(--display);text-transform:none;letter-spacing:0;margin-top:44px;max-width:none}
 .page p,.page li{color:var(--muted)}.page b,.page strong{color:var(--paper);font-weight:600}
 .page ul{padding-left:20px}.page li{margin-bottom:10px}
 
+@media (max-width:980px){
+  /* the staircase becomes a list, read from Largo down to Legend */
+  .levels{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px clamp(20px,4vw,40px)}
+  .levels li{margin-top:0;flex-direction:row;align-items:center;gap:14px;padding-right:0}
+  .levels img{width:76px;margin:0;flex:none}
+  .levels .step{border-top:0;border-left:2px solid var(--staff);padding:2px 0 2px 14px}
+  .levels .legend .step{border-left-color:var(--ivory)}
+  .parents{grid-template-columns:1fr}.parents figure{max-width:320px}
+}
 @media (max-width:860px){
-  .hero-top{grid-template-columns:1fr}.hero .lede{margin:0}
+  .hero-top{grid-template-columns:1fr}
   .match{grid-template-columns:1fr}.match .phone{max-width:320px}
-  .clefs,.stay{grid-template-columns:1fr}
-  .facts{grid-template-columns:1fr}
+  .clefs,.stay{grid-template-columns:1fr;gap:32px}
   .screens{grid-template-columns:repeat(4,72%)}
+}
+@media (max-width:620px){
+  .levels{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .rivals small{font-size:12px}
 }
 @media (max-width:520px){
   body{font-size:17px}
   .top nav{gap:14px}
   .key{padding-top:50px}.key b{font-size:24px}.key small{font-size:11px}
   .piano{gap:4px}
-  .ladder li{grid-template-columns:64px 1fr;padding:12px 24px}.ladder img{width:64px;height:64px}.ladder .cls{font-size:24px}
   .steps li{grid-template-columns:40px 1fr}.steps li::before{font-size:48px}
+  .cta{width:100%;font-size:23px;padding-left:12px;padding-right:12px}
+  .get img{width:88px;height:88px}
 }

@@ -17,11 +17,11 @@ svg.setAttribute('viewBox', `0 0 ${W} 230`);
   for (let i = 0; i < 5; i++) el('line', { class: 'line', x1: 20, x2: W - 105, y1: TOP + i * S, y2: TOP + i * S });
   el('line', { class: 'line', x1: 20.5, x2: 20.5, y1: TOP, y2: BOTTOM });
   const clef = document.querySelector('#clef-src')?.content.querySelector('svg');
-  if (clef) { const c = clef.cloneNode(true); c.setAttribute('class', 'clef'); c.setAttribute('x', 30); c.setAttribute('y', yOf(2) - 4.75 * S); c.setAttribute('height', 7.9 * S); c.setAttribute('width', 2.65 * S); svg.appendChild(c); }
+  if (clef) { const c = clef.cloneNode(true); c.setAttribute('class', 'clef'); c.setAttribute('x', 30); c.setAttribute('y', yOf(2) - 4.392 * S); c.setAttribute('height', 7.024 * S); c.setAttribute('width', 2.684 * S); svg.appendChild(c); }
   const nib = el('image', { href: '/img/nib-open.webp', x: W - 140, y: TOP - 34, width: 150, height: 150 });
   const noteG = el('g', { class: 'note' }), ledger = el('line', { class: 'line', x1: -S, x2: S, y1: 0, y2: 0 }, noteG);
-  const head = el('ellipse', { cx: 0, cy: 0, rx: 0.64 * S, ry: 0.45 * S, transform: 'rotate(-22)', fill: '#f5f1ff' }, noteG);
-  const stem = el('line', { stroke: '#f5f1ff', 'stroke-width': 2.2, 'stroke-linecap': 'round' }, noteG);
+  const head = el('ellipse', { cx: 0, cy: 0, rx: 0.64 * S, ry: 0.45 * S, transform: 'rotate(-22)', fill: '#f5f6f8' }, noteG);
+  const stem = el('line', { stroke: '#f5f6f8', 'stroke-width': 2.2, 'stroke-linecap': 'round' }, noteG);
   const chip = el('g', { opacity: 0 }); const chipBox = el('rect', { class: 'chip', x: -28, y: -20, width: 56, height: 36, rx: 10 }, chip); const chipText = el('text', { class: 'name', x: 0, y: 7, 'text-anchor': 'middle' }, chip);
 
   let audio = null;
@@ -36,7 +36,7 @@ svg.setAttribute('viewBox', `0 0 ${W} 230`);
     const y = yOf(cur.pos), up = cur.pos < 4; wrong = false; state = 'gliding'; t0 = performance.now();
     head.setAttribute('cy', 0); ledger.style.display = cur.pos <= -2 || cur.pos >= 10 ? '' : 'none';
     stem.setAttribute('x1', up ? 0.57 * S : -0.57 * S); stem.setAttribute('x2', up ? 0.57 * S : -0.57 * S); stem.setAttribute('y1', up ? -2 : 2); stem.setAttribute('y2', up ? -3.3 * S : 3.3 * S);
-    noteG.dataset.y = y; noteG.style.opacity = 1; chip.setAttribute('opacity', 0); head.setAttribute('fill', '#f5f1ff'); stem.setAttribute('stroke', '#f5f1ff');
+    noteG.dataset.y = y; noteG.style.opacity = 1; chip.setAttribute('opacity', 0); head.setAttribute('fill', '#f5f6f8'); stem.setAttribute('stroke', '#f5f6f8');
     place(REDUCED ? (X0 + HIT) / 2 : X0, 1);
   }
   function place(x, sc) { noteG.setAttribute('transform', `translate(${x} ${noteG.dataset.y}) scale(${sc})`); noteG.dataset.x = x; }
@@ -54,13 +54,13 @@ svg.setAttribute('viewBox', `0 0 ${W} 230`);
     const k = keys[li]; k.classList.add('down'); setTimeout(() => k.classList.remove('down'), 120);
     if (!cur || state !== 'gliding') return;
     if (li === cur.li) {
-      tone(cur.midi); flash(k, 'good'); state = 'eaten'; eatT = performance.now(); head.setAttribute('fill', '#c8ff3b'); stem.setAttribute('stroke', '#c8ff3b');
+      tone(cur.midi); flash(k, 'good'); state = 'eaten'; eatT = performance.now(); head.setAttribute('fill', '#f3eddc'); stem.setAttribute('stroke', '#f3eddc');
       setTimeout(() => nibFace('closed'), 150); setTimeout(() => nibFace('happy', 500), 300);
       if (!wrong) { streak++; streakEl.textContent = streak > 1 ? `${streak} in a row` : ''; }
       live.textContent = `Yes, ${LETTERS[cur.li]}.`;
       if (REDUCED) setTimeout(next, 650);
     } else {
-      tone(12 * (cur.oct + 1) + SEMI[li]); flash(k, 'bad'); wrong = true; streak = 0; streakEl.textContent = ''; showName(); head.setAttribute('fill', '#ff5c93'); stem.setAttribute('stroke', '#ff5c93');
+      tone(12 * (cur.oct + 1) + SEMI[li]); flash(k, 'bad'); wrong = true; streak = 0; streakEl.textContent = ''; showName(); head.setAttribute('fill', '#ff4f8b'); stem.setAttribute('stroke', '#ff4f8b');
       live.textContent = `Not ${LETTERS[li]}. It is ${LETTERS[cur.li]}.`;
     }
   }
