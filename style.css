@@ -180,3 +180,15 @@ h3{font:700 28px/1.1 var(--display);margin:0 0 6px}
   .cta{width:100%;font-size:23px;padding-left:12px;padding-right:12px}
   .get img{width:88px;height:88px}
 }
+
+/* the language menu in the header: the language's own name, its code on a phone */
+.lang{position:relative}
+.lang summary{list-style:none;cursor:pointer;color:var(--muted);display:flex;align-items:center;gap:6px}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.lang[open] summary,.lang summary:hover{color:var(--paper)}
+.lang .code{display:none}
+.lang ul{position:absolute;right:0;top:calc(100% + 10px);z-index:5;margin:0;padding:6px;list-style:none;min-width:160px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.lang li a{display:block;padding:8px 12px;border-radius:8px}
+.top nav .lang li a[aria-current]{color:var(--ivory)}
+@media (max-width:520px){.lang .full{display:none}.lang .code{display:inline}}

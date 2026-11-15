@@ -1,12 +1,23 @@
 // The homepage demo: one treble staff, a note gliding towards Nib, a 7-key piano. Name the note before it reaches Nib and
 // Nib eats it (you hear its pitch); miss it and its name shows. No clock pressure on reduced motion: the note waits.
+// The page is written in five languages: the note names come from the keys, the spoken lines from data attributes on .demo.
 (() => {
+  // the language menu in the header closes on a click outside it and on Escape
+  const menu = document.querySelector('details.lang');
+  if (menu) {
+    addEventListener('click', e => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+    addEventListener('keydown', e => { if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); } });
+  }
   const svg = document.querySelector('#staff'), keys = [...document.querySelectorAll('.key')], live = document.querySelector('#demo-live'), streakEl = document.querySelector('#streak');
   if (!svg || !keys.length) return;
   // a phone gets a shorter staff (wider in proportion), so the note and Nib stay big enough to read
 const NS = 'http://www.w3.org/2000/svg', W = innerWidth < 640 ? 560 : 1000, S = 24, BOTTOM = 170, TOP = BOTTOM - 4 * S, X0 = 150, HIT = W - 165, TRAVEL = W < 1000 ? 5.5 : 6.5;
 svg.setAttribute('viewBox', `0 0 ${W} 230`);
-  const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'], SOLF = ['Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si'], SEMI = [0, 2, 4, 5, 7, 9, 11];
+  const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'], SEMI = [0, 2, 4, 5, 7, 9, 11];
+  // what the page calls the notes (C or Do, B or H or Si), and its sentences with {a} {b} {n} to fill in
+  const NAMES = keys.map((k, i) => k.querySelector('b')?.textContent || LETTERS[i]), demo = svg.closest('.demo');
+  const TEXT = { yes: 'Yes, {a}.', was: 'It was {a}.', not: 'Not {a}. It is {b}.', row: '{n} in a row' };
+  const say = (key, o) => (demo?.dataset[key] || TEXT[key]).replace(/\{(\w)\}/g, (_, c) => o[c]);
   // treble positions from middle C (ledger line) to G5 (just above the staff); pos 0 = bottom line E4
   const NOTES = Array.from({ length: 12 }, (_, i) => { const step = i, li = step % 7, oct = 4 + Math.floor(step / 7); return { li, oct, pos: step - 2, midi: 12 * (oct + 1) + SEMI[li] }; });
   const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -40,7 +51,7 @@ svg.setAttribute('viewBox', `0 0 ${W} 230`);
     place(REDUCED ? (X0 + HIT) / 2 : X0, 1);
   }
   function place(x, sc) { noteG.setAttribute('transform', `translate(${x} ${noteG.dataset.y}) scale(${sc})`); noteG.dataset.x = x; }
-  function showName() { chipText.textContent = LETTERS[cur.li]; chip.setAttribute('transform', `translate(${noteG.dataset.x} ${Math.max(24, Math.min(+noteG.dataset.y - 2.4 * S, TOP - 20))})`); chip.setAttribute('opacity', 1); }
+  function showName() { const n = NAMES[cur.li], w = n.length > 2 ? 76 : 56; chipText.textContent = n; chipBox.setAttribute('x', -w / 2); chipBox.setAttribute('width', w); chip.setAttribute('transform', `translate(${noteG.dataset.x} ${Math.max(24, Math.min(+noteG.dataset.y - 2.4 * S, TOP - 20))})`); chip.setAttribute('opacity', 1); }
   function frame(now) {
     if (!running) return;
     const k = (now - t0) / 1000;
@@ -49,19 +60,19 @@ svg.setAttribute('viewBox', `0 0 ${W} 230`);
     else if (state === 'missed' && now - eatT > 1300) next();
     raf = requestAnimationFrame(frame);
   }
-  function miss() { state = 'missed'; eatT = performance.now(); showName(); nibFace('hurt', 700); streak = 0; streakEl.textContent = ''; live.textContent = `It was ${LETTERS[cur.li]}.`; }
+  function miss() { state = 'missed'; eatT = performance.now(); showName(); nibFace('hurt', 700); streak = 0; streakEl.textContent = ''; live.textContent = say('was', { a: NAMES[cur.li] }); }
   function answer(li) {
     const k = keys[li]; k.classList.add('down'); setTimeout(() => k.classList.remove('down'), 120);
     if (!cur || state !== 'gliding') return;
     if (li === cur.li) {
       tone(cur.midi); flash(k, 'good'); state = 'eaten'; eatT = performance.now(); head.setAttribute('fill', '#f3eddc'); stem.setAttribute('stroke', '#f3eddc');
       setTimeout(() => nibFace('closed'), 150); setTimeout(() => nibFace('happy', 500), 300);
-      if (!wrong) { streak++; streakEl.textContent = streak > 1 ? `${streak} in a row` : ''; }
-      live.textContent = `Yes, ${LETTERS[cur.li]}.`;
+      if (!wrong) { streak++; streakEl.textContent = streak > 1 ? say('row', { n: streak }) : ''; }
+      live.textContent = say('yes', { a: NAMES[cur.li] });
       if (REDUCED) setTimeout(next, 650);
     } else {
       tone(12 * (cur.oct + 1) + SEMI[li]); flash(k, 'bad'); wrong = true; streak = 0; streakEl.textContent = ''; showName(); head.setAttribute('fill', '#ff4f8b'); stem.setAttribute('stroke', '#ff4f8b');
-      live.textContent = `Not ${LETTERS[li]}. It is ${LETTERS[cur.li]}.`;
+      live.textContent = say('not', { a: NAMES[li], b: NAMES[cur.li] });
     }
   }
   const flash = (k, c) => { k.classList.remove('good', 'bad'); void k.offsetWidth; k.classList.add(c); setTimeout(() => k.classList.remove(c), 320); };

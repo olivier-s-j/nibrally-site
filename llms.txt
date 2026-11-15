@@ -21,5 +21,9 @@
 ## Pages
 
 - [Home](https://nibrally.com/): what the game is and how a match works, with a playable example
+- [Home in Dutch](https://nibrally.com/nl/): the same page in Dutch
+- [Home in French](https://nibrally.com/fr/): the same page in French
+- [Home in German](https://nibrally.com/de/): the same page in German
+- [Home in Spanish](https://nibrally.com/es/): the same page in Spanish
 - [Support](https://nibrally.com/support.html): moving your progress, changing the clef, the language or the note names, reporting a problem
 - [Privacy](https://nibrally.com/privacy.html): the game collects no personal data
