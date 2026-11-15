@@ -36,13 +36,14 @@ a:hover{color:var(--ivory)}
 .foot nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 .foot .legal{font-size:14px;line-height:1.6}
 
-/* the one action: an ivory button like the game's own */
+/* the one action, once per store: an ivory button like the game's own */
+.stores{display:flex;flex-wrap:wrap;gap:20px 14px}
 .cta{display:inline-flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:var(--ivory);color:var(--ink);text-decoration:none;border-radius:16px;padding:17px 30px 14px;box-shadow:0 6px 0 var(--ivory2);font:800 clamp(24px,2.3vw,28px)/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
 .cta small{font:500 14px/1.2 var(--text);text-transform:none;letter-spacing:0;color:#50535c}
 .cta:hover{color:var(--ink);background:#fbf7ea}
 .cta:active{transform:translateY(4px);box-shadow:0 2px 0 var(--ivory2)}
 .cta:focus-visible{border-radius:16px}
-.also{margin:16px 0 0;color:var(--muted);font-size:16px}
+.also{margin:20px 0 0;color:var(--muted);font-size:16px}
 
 /* hero: the headline and the action, then a playable treble staff that runs to Nib at the right edge */
 .hero{padding-top:clamp(20px,4vw,48px)}

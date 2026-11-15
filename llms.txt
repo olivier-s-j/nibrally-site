@@ -1,0 +1,25 @@
+# Nib Rally
+
+> Nib Rally is a game for iPhone, iPad and Android that teaches you to read music notes on the staff. A note glides across the staff, you name it on a piano before your rival does, and every rival you beat adds one new note. It is made by Solai BV in Belgium.
+
+- What it teaches: reading notes in the treble clef (18 notes), in the bass clef (17 notes) or in both on the grand staff (30 notes), up to the ledger lines beyond the staff.
+- Who it is for: children from about 8 and adult beginners. It goes well with piano lessons, music school or choir.
+- How it works: you play matches against rivals. Each rival brings one new note and wears the colour of that note. There are seven levels named after the tempo words of music, from Largo to Presto, and each level ends with a boss who changes one rule. A short placement test lets players who already read some notes start higher.
+- How notes stay: notes you find hard come back more often, the owl Sir Fermata practises them with you without a clock, a note read again on a later day earns a star, and a daily streak keeps it going.
+- Note names: letters (C D E), Do Re Mi with Si or Ti, German names with H, or the names used in your language.
+- For parents and teachers: a practice report with minutes per day and the notes to work on, and up to four players on one device.
+- Privacy: no ads, no accounts, no tracking. Progress stays on the device and the game works offline.
+- Languages: 44, namely English, Dutch, French, German, Spanish, Italian, Portuguese, Catalan, Romanian, Polish, Czech, Slovak, Slovenian, Hungarian, Croatian, Turkish, Greek, Danish, Norwegian, Swedish, Finnish, Russian, Ukrainian, Vietnamese, Indonesian, Malay, Thai, Hindi, Urdu, Japanese, Korean, Simplified Chinese, Traditional Chinese, Arabic, Hebrew, Bengali, Punjabi, Gujarati, Marathi, Kannada, Malayalam, Tamil, Telugu, Odia.
+- Platforms: iPhone and iPad through the App Store, Android through Google Play. The store pages show the current price.
+- Publisher: Solai BV, Belgium, enterprise number 0774.804.524. Contact: info@nibrally.com.
+
+## Get the game
+
+- [Nib Rally on the App Store](https://apps.apple.com/app/id6829792758): for iPhone and iPad
+- [Nib Rally on Google Play](https://play.google.com/store/apps/details?id=com.nibrally.app): for Android
+
+## Pages
+
+- [Home](https://nibrally.com/): what the game is and how a match works, with a playable example
+- [Support](https://nibrally.com/support.html): moving your progress, changing the clef, the language or the note names, reporting a problem
+- [Privacy](https://nibrally.com/privacy.html): the game collects no personal data
