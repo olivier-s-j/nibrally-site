@@ -27,3 +27,7 @@
 - [Home in Spanish](https://nibrally.com/es/): the same page in Spanish
 - [Support](https://nibrally.com/support.html): moving your progress, changing the clef, the language or the note names, reporting a problem
 - [Privacy](https://nibrally.com/privacy.html): the game collects no personal data
+- [Support in Dutch](https://nibrally.com/nl/support.html) and [privacy in Dutch](https://nibrally.com/nl/privacy.html): the same two pages in Dutch
+- [Support in French](https://nibrally.com/fr/support.html) and [privacy in French](https://nibrally.com/fr/privacy.html): the same two pages in French
+- [Support in German](https://nibrally.com/de/support.html) and [privacy in German](https://nibrally.com/de/privacy.html): the same two pages in German
+- [Support in Spanish](https://nibrally.com/es/support.html) and [privacy in Spanish](https://nibrally.com/es/privacy.html): the same two pages in Spanish
