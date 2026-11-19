@@ -192,3 +192,7 @@ h3{font:700 28px/1.1 var(--display);margin:0 0 6px}
 .lang li a{display:block;padding:8px 12px;border-radius:8px}
 .top nav .lang li a[aria-current]{color:var(--ivory)}
 @media (max-width:520px){.lang .full{display:none}.lang .code{display:inline}}
+/* Nib Rally: Workbook pages */
+.wb-soon,.wb-get{display:inline-block;padding:10px 20px;border-radius:999px;background:#e06c0d;color:#fff;font-weight:700;text-decoration:none}
+.wb-shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:28px 0 8px}
+.wb-shots img{width:100%;height:auto;border-radius:12px;border:1px solid rgba(255,255,255,.14)}
