@@ -31,3 +31,18 @@
 - [Support in French](https://nibrally.com/fr/support.html) and [privacy in French](https://nibrally.com/fr/privacy.html): the same two pages in French
 - [Support in German](https://nibrally.com/de/support.html) and [privacy in German](https://nibrally.com/de/privacy.html): the same two pages in German
 - [Support in Spanish](https://nibrally.com/es/support.html) and [privacy in Spanish](https://nibrally.com/es/privacy.html): the same two pages in Spanish
+
+## Nib Rally: Workbook
+
+Nib Rally: Workbook is a separate app by the same maker, for iPad only. Nib Rally teaches reading notes; in the Workbook you write them.
+
+- What it is: a music workbook that never runs out of pages. Each exercise names a few notes, you put them on the grand staff in the treble or bass clef with a finger or an Apple Pencil, and every note is checked: the clef, the name and the octave.
+- How it grows: it starts with middle C and adds one new note at a time over both staves and their ledger lines, 28 levels and 29 notes. Every page ends with a short melody to write, and 21 well-known tunes are hidden in those melodies.
+- Handwriting: with an Apple Pencil you can choose to draw each notehead yourself; the app reads it on the iPad.
+- Note names: Do Re Mi or C D E. Languages: English and Dutch.
+- Privacy and price: paid once on the App Store, with no in-app purchases, ads, accounts or tracking. It works offline and progress stays on the iPad. The App Store page shows the current price.
+
+- [Nib Rally: Workbook on the App Store](https://apps.apple.com/app/id6834379811): for iPad
+- [Workbook](https://nibrally.com/workbook/): what the app is, with screenshots
+- [Workbook in Dutch](https://nibrally.com/nl/workbook/): the same page in Dutch
+- [Workbook support](https://nibrally.com/workbook/support.html) and [Workbook privacy](https://nibrally.com/workbook/privacy.html): help with the app, and what it keeps on the iPad
